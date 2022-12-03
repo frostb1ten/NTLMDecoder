@@ -1,6 +1,5 @@
 import hashlib
 import itertools
-import math
 import threading
 import time
 
