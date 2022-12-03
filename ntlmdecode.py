@@ -6,11 +6,13 @@ import time
 
 ntlm_hash = "0CB6948805F797BF2A82807973B89537"
 characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()"
+knownchars = ""
 
 event = threading.Event()
 
 def guess_password(password):
    password = ''.join(password)
+   password = knownchars+password
    ntlm_hash_guess = hashlib.new('md4', password.encode('utf-16le')).hexdigest()
    print(ntlm_hash_guess+":"+password)
    if ntlm_hash_guess == ntlm_hash.lower():
